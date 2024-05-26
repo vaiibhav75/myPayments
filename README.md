@@ -1,1 +1,1 @@
-# myPayments
+# A payment and wallet simulator
