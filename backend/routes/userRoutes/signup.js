@@ -4,7 +4,7 @@ const zod = require("zod");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
-const User = require("../../database/db");
+const {User} = require("../../database/db");
 const { JWT_SECRET } = require("../../config");
 
 // Zod Schema
@@ -45,8 +45,8 @@ router.post("/", async (req,res) => {
     if (!user) {
         return res.status(500).json({message: "Database Failure"});
     }
-    const userID = user._id.toString();
-    const token = jwt.sign(userID, JWT_SECRET);
+    const userId = user._id.toString();
+    const token = jwt.sign(userId, JWT_SECRET);
     return res.status(200).json({
         message: "User created successfully",
         token: token

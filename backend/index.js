@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 // Import router
-const rootRouter = require('./routes/index')
+const rootRouter = require('./routes/mainRouter')
 
 // Routes setup
 app.use(bodyParser.json());
