@@ -7,13 +7,13 @@ const updateRouter = require("./userRoutes/updateInfo");
 const searchRouter = require("./userRoutes/searchUsers");
 
 router.get ("/", async (req, res) => {
-    res.json({message:"api/v1/user: User Working"});
+    res.json({message:"api/v1/user: Working"});
 })
 
-router.use ("/signin", signInRouter);
-router.use("/signup", signUpRouter);
-router.use("/update", updateRouter);
-router.use("/bulk", searchRouter);
+router.use(signInRouter);
+router.use(signUpRouter);
+router.use(updateRouter);
+router.use(searchRouter);
 
 
 module.exports = router;

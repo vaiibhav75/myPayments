@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {User} = require("../../database/db");
 
-router.get("/", async (req,res) =>{
+router.get("/bulk", async (req,res) =>{
     const filter = req.query.filter || "";
     const matchingUsers = await User.find({
         $or: [

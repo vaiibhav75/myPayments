@@ -4,7 +4,7 @@ const zod = require("zod");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
-const {User} = require("../../database/db");
+const {User, Account} = require("../../database/db");
 const { JWT_SECRET } = require("../../config");
 
 // Zod Schema
@@ -16,7 +16,7 @@ const signupBody = zod.object({
 })
 
 
-router.post("/", async (req,res) => {
+router.post("/signup", async (req,res) => {
 
     // zod verification
     const {success} = signupBody.safeParse(req.body);
@@ -45,7 +45,13 @@ router.post("/", async (req,res) => {
     if (!user) {
         return res.status(500).json({message: "Database Failure"});
     }
+
     const userId = user._id.toString();
+    await Account.create({
+        userId,
+        balance: Math.floor(1 + Math.random() * 100000)
+    })
+
     const token = jwt.sign(userId, JWT_SECRET);
     return res.status(200).json({
         message: "User created successfully",

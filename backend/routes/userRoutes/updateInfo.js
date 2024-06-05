@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const zod = require('zod');
 const {User} = require("../../database/db");
-const {authMiddleware} = require('../middleware/authorization')
+const {authMiddleware} = require('../../middleware/authorization')
 const bcrypt = require("bcrypt");
 
 
@@ -11,7 +11,7 @@ const updateBody = zod.object({
     firstName: zod.string().max(50).optional(),
     lastName: zod.string().max(50).optional()
 })
-router.put("/", authMiddleware, async (req,res) => {
+router.put("/update", authMiddleware, async (req,res) => {
     const { success } = updateBody.safeParse(req.body);
     if (!success) {
         res.status(411).json({

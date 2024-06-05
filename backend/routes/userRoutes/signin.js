@@ -14,7 +14,7 @@ const signInBody = zod.object({
 })
 
 
-router.post("/", async (req,res) => {
+router.post("/signin", async (req,res) => {
 
     // zod verification
     const {success} = signInBody.safeParse(req.body);
