@@ -39,7 +39,11 @@ router.post("/signin", async (req,res) => {
     const token = jwt.sign(userId, JWT_SECRET);
     return res.status(200).json({
         message: "User logged in successfully",
-        token: token
+        token: token,
+        username: user.username,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName
     })
 
 })
