@@ -6,11 +6,7 @@ import DashboardPage from "./pages/DashboardPage.jsx";
 import SendMoneyPage from "./pages/SendMoneyPage.jsx";
 import SignInPage from "./pages/SingInPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
-
-import Loading from "./components/Loading.jsx";
-import {useEffect, useState} from "react";
-
-import checkLogin from "./functions/checkLogin.jsx";
+import MainPage from "./pages/MainPage.jsx";
 
 function App() {
 
@@ -18,7 +14,7 @@ function App() {
     <BrowserRouter>
 
         <Routes>
-            <Route path="/" element={<Main />}></Route>
+            <Route path="/" element={<MainPage />}></Route>
             <Route path="/signup" element={<SignUpPage />}></Route>
             <Route path="/signin" element={<SignInPage />}></Route>
             <Route path="/send" element={<SendMoneyPage />}></Route>
@@ -27,19 +23,6 @@ function App() {
     </BrowserRouter>
   )
 }
-
-function Main() {
-    const[loading, setLoading] = useState(true);
-    checkLogin(setLoading);
-
-    return (
-        <>
-            {loading ? <Loading /> : <>Hello</>}
-        </>
-    )
-
-}
-
 
 
 export default App

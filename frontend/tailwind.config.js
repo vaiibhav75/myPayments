@@ -6,10 +6,15 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat Alternates', 'sans-serif'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
+      },
       colors: {
         lightGray : "#F4F4F5",
         darkGray: "#6F7583",
-        green: "#21C55D"
+        green: "#21C55D",
+        red: "#ff0033"
       }
     },
   },
