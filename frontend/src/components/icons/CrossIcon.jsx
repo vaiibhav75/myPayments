@@ -1,5 +1,5 @@
 import {toDashboard} from "../../utils/toNavigate.js";
-function Cross({ onClick }) {
+function CrossIcon({ onClick }) {
     return (
         <div className={"absolute right-4 top-4 text-darkGray hover:text-red"} onClick={toDashboard}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-10">
@@ -9,4 +9,4 @@ function Cross({ onClick }) {
     )
 }
 
-export default Cross
+export default CrossIcon

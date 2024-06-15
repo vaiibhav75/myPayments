@@ -1,3 +1,3 @@
 module.exports = {
-    URL: "http://localhost:3000/api/v1"
+    URL: "https://my-payments-backend.vercel.app/api/v1"
 }
