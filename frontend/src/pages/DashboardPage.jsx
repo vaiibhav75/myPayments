@@ -1,4 +1,14 @@
-function DashboardPage () {
+import BlackButton from "../components/small/BlackButton.jsx";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {currentUser} from "../atoms/currentUser.js";
+import {useNavigate} from "react-router-dom";
+
+function DashboardPage() {
+
+    const user = useRecoilValue(currentUser);
+
+    const setUser = useSetRecoilState(currentUser);
+    const navigate = useNavigate();
     return (
         <>
             <h1>Dashboard</h1>
@@ -12,6 +22,14 @@ function DashboardPage () {
                     <li>Transaction 3</li>
                 </ul>
             </div>
+            <div>
+                {user.username && <p>Logged in as {user.username}</p>}
+                {user.token && <p>Token: {user.token}</p>}
+            </div>
+            <BlackButton label={"Sign Out"} onClick={() => {
+                setUser({})
+                navigate("/")
+            }}></BlackButton>
         </>
     )
 }
