@@ -3,7 +3,7 @@ import loading from "../../assets/animations/loadingAmiation.json";
 
 function LoadingPage() {
     return (
-        <div className={"flex justify-center items-center h-screen bg-lightGray"}>
+        <div className={"flex justify-center items-center h-full bg-lightGray"}>
             <Lottie animationData={loading} style={{ width: 350, height: 350 }}/>
         </div>
     )

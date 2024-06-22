@@ -6,7 +6,7 @@ import DownArrow from "../icons/DownArrow.jsx";
 const faqs = [
     {
         question: "What is MyPayments?",
-        answer: "MyPayments is a web app that allows you to simulate various payment scenarios to understand how different factors affect your payments."
+        answer: "MyPayments is a web app that allows you to simulate various payment scenarios to understand the working payments."
     },
     {
         question: "How are transactions secured in MyPayments?",
@@ -21,7 +21,7 @@ const faqs = [
         answer: "Yes, your personal information is protected using robust security measures, including encryption and secure data storage practices."
     },
     {
-        question: "How do I update my account information in MyPayments?",
+        question: "How do I update my account information ?",
         answer: "To update your account information, log in to your account and click the edit icon on the dashboard"
     },
 
@@ -29,11 +29,11 @@ const faqs = [
 
 function FaqSection () {
     return (
-        <div id = "faqs" className={"flex gap-20 px-36 py-20"}>
-            <div className={"w-2/5 flex justify-center"}>
-                <img src={FaqIllustration} alt="FAQs" className="w-full"/>
+        <div id = "faqs" className="flex flex-col md:flex-row max-w-7xl gap-4 md:gap-0 px-8 mx-auto py-12 justify-between">
+            <div className={"w-full md:w-2/5 flex justify-center"}>
+                <img src={FaqIllustration} alt="FAQs"/>
             </div>
-            <div className={"w-3/5 flex pt-4 justify-center ps-10"}>
+            <div className="w-full md:w-1/2 flex flex-col justify-center">
                 <FaqComponent></FaqComponent>
             </div>
 
@@ -43,7 +43,7 @@ function FaqSection () {
 }
 
 const FaqComponent = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(null);
 
     const handleToggle = index => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -51,7 +51,7 @@ const FaqComponent = () => {
 
     return (
         <div className="w-full mx-auto">
-            <h1 className="text-3xl font-bold mb-6">Frequently Asked Questions</h1>
+            <h1 className="text-center md:text-left text-3xl lg:text-4xl font-bold mb-6">Frequently Asked Questions</h1>
             {faqs.map((faq, index) => (
                 <FAQ key = {index} index={index} question={faq.question} answer={faq.answer} activeIndex={activeIndex} handleToggle={handleToggle} />
             ))}

@@ -12,18 +12,21 @@ import {RecoilRoot} from "recoil";
 function App() {
 
   return (
-      <RecoilRoot>
-          <BrowserRouter>
+      <div className={"h-screen"}>
+          <RecoilRoot>
+              <BrowserRouter>
 
-              <Routes>
-                  <Route path="/" element={<MainPage />}></Route>
-                  <Route path="/signup" element={<SignUpPage />}></Route>
-                  <Route path="/signin" element={<SignInPage />}></Route>
-                  <Route path="/send" element={<SendMoneyPage />}></Route>
-                  <Route path="/dashboard" element={<DashboardPage />}></Route>
-              </Routes>
-          </BrowserRouter>
-      </RecoilRoot>
+                  <Routes>
+                      <Route path="/" element={<MainPage />}></Route>
+                      <Route path="/signup" element={<SignUpPage />}></Route>
+                      <Route path="/signin" element={<SignInPage />}></Route>
+                      <Route path="/send" element={<SendMoneyPage />}></Route>
+                      <Route path="/dashboard" element={<DashboardPage />}></Route>
+                  </Routes>
+              </BrowserRouter>
+          </RecoilRoot>
+      </div>
+
 
   )
 }

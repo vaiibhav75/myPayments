@@ -11,5 +11,5 @@ export const useCheckLoginStatus = () => {
 // Custom hook to check payment status
 export const useCheckPaymentStatus = () => {
     const receiver = useRecoilValue(paymentReceiver);
-    return receiver !== null && receiver !== undefined && receiver !== {};
+    return (receiver !== null && receiver !== undefined && receiver !== {});
 };
