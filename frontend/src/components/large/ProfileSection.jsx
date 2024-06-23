@@ -11,9 +11,9 @@ function ProfileSection({firstName, balance, clickEdit, clickLogout}) {
             <header className="bg-gray-800 text-white py-5 mb-6">
                 <div className="max-w-7xl mx-auto px-8">
                     <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
                             <MainLogo></MainLogo>
-                            <h1 className="text-3xl font-bold hover:cursor-pointer" onClick={() => {navigate("/")}}>MyPayments</h1>
+                            <h1 className="text-2xl sm:text-3xl font-bold hover:cursor-pointer" onClick={() => {navigate("/")}}>MyPayments</h1>
 
                         </div>
                         <div>
