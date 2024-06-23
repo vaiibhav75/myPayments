@@ -49,13 +49,11 @@ function DashboardPage() {
                 balance={currentBalance}
 
                 clickLogout={() => {
-                    setLoading(true);
                     setUser({});
                     navigate("/");
                 }}
 
                 clickEdit={() => {
-                    setLoading(true);
                     navigate("/update");
                 }}>
 
