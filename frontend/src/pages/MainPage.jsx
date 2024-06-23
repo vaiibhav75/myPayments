@@ -55,7 +55,7 @@ const TopBar = () => {
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
                         <MainLogo />
-                        <h1 className="text-3xl font-bold">MyPayments</h1>
+                        <h1 className="text-3xl font-bold hover:cursor-pointer">MyPayments</h1>
                     </div>
 
                     {/* Toggle Button for Mobile */}

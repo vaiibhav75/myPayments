@@ -5,11 +5,11 @@ import { paymentReceiver } from "../atoms/paymentReceiver";
 // Custom hook to check login status
 export const useCheckLoginStatus = () => {
     const user = useRecoilValue(currentUser);
-    return user.token !== null && user.token !== undefined && user.token !== "";
+    return Boolean(user?.token);
 };
 
 // Custom hook to check payment status
 export const useCheckPaymentStatus = () => {
     const receiver = useRecoilValue(paymentReceiver);
-    return (receiver !== null && receiver !== undefined && receiver !== {});
+    return Boolean(receiver && Object.keys(receiver).length);
 };

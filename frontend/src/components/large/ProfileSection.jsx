@@ -2,8 +2,10 @@ import MainLogo from "../icons/MainLogo.jsx";
 import SettingsIcon from "../icons/SettingsIcon.jsx";
 import LogOutIcon from "../icons/LogOutIcon.jsx";
 import InputArea from "../small/InputArea.jsx";
+import {useNavigate} from "react-router-dom";
 
 function ProfileSection({firstName, balance, clickEdit, clickLogout}) {
+    const navigate = useNavigate();
     return (
         <div>
             <header className="bg-gray-800 text-white py-5 mb-6">
@@ -11,7 +13,7 @@ function ProfileSection({firstName, balance, clickEdit, clickLogout}) {
                     <div className="flex justify-between items-center">
                         <div className="flex items-center gap-3">
                             <MainLogo></MainLogo>
-                            <h1 className="text-3xl font-bold">MyPayments</h1>
+                            <h1 className="text-3xl font-bold hover:cursor-pointer" onClick={() => {navigate("/")}}>MyPayments</h1>
 
                         </div>
                         <div>

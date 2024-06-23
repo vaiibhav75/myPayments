@@ -1,23 +1,75 @@
-import BlackButton from "../components/small/BlackButton.jsx";
-import {useRecoilValue, useSetRecoilState} from "recoil";
-import {currentUser} from "../atoms/currentUser.js";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useRecoilState, useSetRecoilState} from "recoil";
+
+import {currentUser} from "../atoms/currentUser.js";
+import {paymentReceiver} from "../atoms/paymentReceiver.js";
+
 import ProfileSection from "../components/large/ProfileSection.jsx";
 import UserSearchSection from "../components/large/UserSearchSection.jsx";
+import LoadingPage from "../components/large/LoadingPage.jsx";
+
+import {useCheckLoginStatus} from "../utils/checkStatus.jsx";
+import {checkBalance} from "../api/balance.js";
 
 function DashboardPage() {
 
-    const user = useRecoilValue(currentUser);
-
-    const setUser = useSetRecoilState(currentUser);
+    // hooks
     const navigate = useNavigate();
-    return (
-        <div className={"bg-lightGray h-screen"}>
-            <ProfileSection firstName="Vaibhav" balance={95186} clickLogout={() => {
-                setUser({})
+    const loginStatus = useCheckLoginStatus();
+
+    // Page state
+    const [loading, setLoading] = useState(true);
+    const [currentBalance, setBalance] = useState(0);
+
+    // User
+    const [user,setUser] = useRecoilState(currentUser);
+    const setReceiver = useSetRecoilState(paymentReceiver);
+
+    // Check userStatus
+    useEffect(() => {
+        async function run() {
+            if (!loginStatus) {
                 navigate("/")
-            }}></ProfileSection>
-           <UserSearchSection></UserSearchSection>
+            }
+            const balance = await checkBalance(user.token);
+            setBalance(balance);
+            setLoading(false);
+        }
+        run();
+    }, []);
+
+
+    if (loading) return <LoadingPage></LoadingPage>
+
+    return (
+        <div className={"bg-lightGray min-h-screen"}>
+            <ProfileSection
+                firstName={user.firstName}
+                balance={currentBalance}
+
+                clickLogout={() => {
+                    setLoading(true);
+                    setUser({});
+                    navigate("/");
+                }}
+
+                clickEdit={() => {
+                    setLoading(true);
+                    navigate("/update");
+                }}>
+
+
+            </ProfileSection>
+           <UserSearchSection
+               cuurentUser={user.username}
+
+               clickSend={(id,firsName,lastName) =>{
+                   setLoading(true);
+                   setReceiver({id:id,firstName:firsName,lastName:lastName});
+                   navigate("/send");
+               }}>
+           </UserSearchSection>
         </div>
     )
 }
