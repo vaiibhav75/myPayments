@@ -1,34 +1,37 @@
+import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+import React, { Suspense, lazy } from 'react';
 
-import './App.css'
-import {useNavigate,BrowserRouter, Route, Routes} from "react-router-dom";
+// Lazy load the components
+const DashboardPage = lazy(() => import("./pages/DashboardPage.jsx"));
+const SendMoneyPage = lazy(() => import("./pages/SendMoneyPage.jsx"));
+const SignInPage = lazy(() => import("./pages/SignInPage.jsx"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage.jsx"));
+const MainPage = lazy(() => import("./pages/MainPage.jsx"));
+const UpdatePage = lazy(() => import("./pages/UpdatePage.jsx"));
 
-import DashboardPage from "./pages/DashboardPage.jsx";
-import SendMoneyPage from "./pages/SendMoneyPage.jsx";
-import SignInPage from "./pages/SingInPage.jsx";
-import SignUpPage from "./pages/SignUpPage.jsx";
-import MainPage from "./pages/MainPage.jsx";
-import UpdatePage from "./pages/UpdatePage.jsx";
-import {RecoilRoot} from "recoil";
+import LoadingPage from "./components/large/LoadingPage.jsx";
 
 function App() {
-
-  return (
-     <div>
-         <RecoilRoot>
-             <BrowserRouter>
-                 <Routes>
-                     <Route path="/" element={<MainPage />}></Route>
-                     <Route path="/signup" element={<SignUpPage />}></Route>
-                     <Route path="/signin" element={<SignInPage />}></Route>
-                     <Route path="/send" element={<SendMoneyPage />}></Route>
-                     <Route path="/dashboard" element={<DashboardPage />}></Route>
-                     <Route path="/update" element={<UpdatePage />}></Route>
-                 </Routes>
-             </BrowserRouter>
-         </RecoilRoot>
-     </div>
-  )
+    return (
+        <div>
+            <RecoilRoot>
+                <BrowserRouter>
+                    <Suspense fallback={<LoadingPage></LoadingPage>}>
+                        <Routes>
+                            <Route path="/" element={<MainPage />} />
+                            <Route path="/signup" element={<SignUpPage />} />
+                            <Route path="/signin" element={<SignInPage />} />
+                            <Route path="/send" element={<SendMoneyPage />} />
+                            <Route path="/dashboard" element={<DashboardPage />} />
+                            <Route path="/update" element={<UpdatePage />} />
+                        </Routes>
+                    </Suspense>
+                </BrowserRouter>
+            </RecoilRoot>
+        </div>
+    );
 }
 
-
-export default App
+export default App;
