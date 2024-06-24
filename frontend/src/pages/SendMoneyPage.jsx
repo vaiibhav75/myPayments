@@ -18,7 +18,7 @@ import {useCheckLoginStatus, useCheckPaymentStatus} from "../utils/checkStatus.j
 import {payment} from "../api/payment.js";
 
 
-function SendMoneyPage () {
+function SendMoneyPage() {
 
     // hooks
     const navigate = useNavigate();
@@ -41,7 +41,7 @@ function SendMoneyPage () {
         if (!receiverStatus) navigate("/dashboard");
 
         setLoading(false);
-    },[])
+    }, [])
 
     async function sendMoney() {
         try {
@@ -85,14 +85,15 @@ function SendMoneyPage () {
                 <Heading text={"Send money"}></Heading>
                 <SubHeading text={"Please do not refresh or close this tab for successful payment"}></SubHeading>
                 <div className={"flex items-center gap-3 my-1"}>
-                    <div className="rounded-full w-11 h-11 bg-green text-white p-2 pt-2.5 flex items-center justify-center">
+                    <div
+                        className="rounded-full w-11 h-11 bg-green text-white p-2 pt-2.5 flex items-center justify-center">
                         <p className="text-2xl font-bold text-center">{receiver.firstName[0]}</p>
                     </div>
                     <h1 className={"text-3xl font-bold"}>{receiver.firstName} {receiver.lastName}</h1>
                 </div>
                 <InputArea
                     title={"Amount (in Rs)"}
-                    placeholder = {"Enter Amount"}
+                    placeholder={"Enter Amount"}
                     type={"text"}
                     value={amount === 0 ? null : amount}
                     setInput={setAmount}>

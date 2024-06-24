@@ -1,27 +1,21 @@
 import CrossIcon from "../components/icons/CrossIcon.jsx";
 import LoadingPage from "../components/large/LoadingPage.jsx";
-import PaymentSuccessful from "../components/large/PaymentSuccessful.jsx";
 import ErrorMessage from "../components/small/ErrorMessage.jsx";
-import GreenButton from "../components/small/GreenButton.jsx";
 import InputArea from "../components/small/InputArea.jsx";
 import SubHeading from "../components/small/SubHeading.jsx";
 import Heading from "../components/small/Heading.jsx";
+import UpdateSuccessful from "../components/large/UpdateSuccessful.jsx";
+import BlackButton from "../components/small/BlackButton.jsx";
 
-import {paymentReceiver} from "../atoms/paymentReceiver.js";
 import {currentUser} from "../atoms/currentUser.js";
-
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilState} from "recoil";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-import {useCheckLoginStatus, useCheckPaymentStatus} from "../utils/checkStatus.jsx";
-import {payment} from "../api/payment.js";
+import {useCheckLoginStatus} from "../utils/checkStatus.jsx";
 import {update} from "../api/update.js";
-import UpdateSuccessful from "../components/large/UpdateSuccessful.jsx";
-import BlackButton from "../components/small/BlackButton.jsx";
-import BottomWarning from "../components/small/BottomWarning.jsx";
 
-function UpdatePage () {
+function UpdatePage() {
 
     // hooks
     const navigate = useNavigate();
@@ -39,7 +33,7 @@ function UpdatePage () {
     const [password, setPassword] = useState("");
 
     // User state
-    const [user,setUser] = useRecoilState(currentUser);
+    const [user, setUser] = useRecoilState(currentUser);
 
     useEffect(() => {
         if (!loginStatus) {
@@ -63,7 +57,6 @@ function UpdatePage () {
             const data = await response.json();
             if (response.status === 200) {
                 setSuccessful(true);
-                console.log(data);
                 setUser((prevUser) => ({
                     ...prevUser,
                     firstName: data.firstName,
@@ -80,7 +73,6 @@ function UpdatePage () {
         } finally {
             setLoading(false);
         }
-
 
 
     }
