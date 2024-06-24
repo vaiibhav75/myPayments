@@ -27,7 +27,7 @@ function SignUpPage() {
     // Page state
     const [loading, setLoading] = useState(true);
     const [errorState, setErrorState] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("Invalid login credentials.");
+    const [errorMessage, setErrorMessage] = useState("");
 
     // User data
     const [firstName, setFirstName] = useState("");

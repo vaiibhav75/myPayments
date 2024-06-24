@@ -21,7 +21,7 @@ const faqs = [
         answer: "Yes, your personal information is protected using robust security measures, including encryption and secure data storage practices."
     },
     {
-        question: "How do I update my account information ?",
+        question: "How do I update my account information?",
         answer: "To update your account information, log in to your account and click the edit icon on the dashboard"
     },
 
