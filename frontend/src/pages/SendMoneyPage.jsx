@@ -1,20 +1,22 @@
 import CrossIcon from "../components/icons/CrossIcon.jsx";
-
-import {paymentReceiver} from "../atoms/paymentReceiver.js";
-import {useRecoilValue} from "recoil";
-import {useNavigate} from "react-router-dom";
-import {useCheckLoginStatus, useCheckPaymentStatus} from "../utils/checkStatus.jsx";
-import {useEffect, useState} from "react";
-import {currentUser} from "../atoms/currentUser.js";
-import {payment} from "../api/payment.js";
 import LoadingPage from "../components/large/LoadingPage.jsx";
 import PaymentSuccessful from "../components/large/PaymentSuccessful.jsx";
-import BlackButton from "../components/small/BlackButton.jsx";
 import ErrorMessage from "../components/small/ErrorMessage.jsx";
 import GreenButton from "../components/small/GreenButton.jsx";
 import InputArea from "../components/small/InputArea.jsx";
 import SubHeading from "../components/small/SubHeading.jsx";
 import Heading from "../components/small/Heading.jsx";
+
+import {paymentReceiver} from "../atoms/paymentReceiver.js";
+import {currentUser} from "../atoms/currentUser.js";
+
+import {useRecoilValue} from "recoil";
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+
+import {useCheckLoginStatus, useCheckPaymentStatus} from "../utils/checkStatus.jsx";
+import {payment} from "../api/payment.js";
+
 
 function SendMoneyPage () {
 
