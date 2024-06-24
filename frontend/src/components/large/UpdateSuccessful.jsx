@@ -1,9 +1,9 @@
 import Lottie from "lottie-react";
-import success from "../../assets/animations/paymentSuccessful.json";
+import success from "../../assets/animations/updateSuccessful.json";
 import CrossIcon from "../icons/CrossIcon.jsx";
 
 
-function PaymentSuccessful() {
+function UpdateSuccessful() {
     return (
         <div className={"flex justify-center items-center h-screen bg-lightGray"}>
             <CrossIcon/>
@@ -12,4 +12,4 @@ function PaymentSuccessful() {
     )
 }
 
-export default PaymentSuccessful
+export default UpdateSuccessful
