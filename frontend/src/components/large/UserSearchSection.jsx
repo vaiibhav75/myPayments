@@ -8,6 +8,7 @@ import {search} from "../../api/search.js";
 function UserSearchSection({clickSend, cuurentUser}) {
     const [currentFilter, setCurrentFilter] = useState("");
     const [filter, setFilter] = useState("");
+    const debouncedFilter = useDebounce(filter, 300);
     return (
         <div className={"max-w-7xl mx-auto px-8 pb-6"}>
             <div>
@@ -24,7 +25,7 @@ function UserSearchSection({clickSend, cuurentUser}) {
 
 
             </div>
-            <UserSection filter={filter} clickSend={clickSend} currentUser={cuurentUser}></UserSection>
+            <UserSection filter={debouncedFilter} clickSend={clickSend} currentUser={cuurentUser}></UserSection>
         </div>
     );
 }
@@ -85,6 +86,20 @@ function User({firstName, lastName, id, clickSend}) {
 
         </div>
     )
+}
+
+function useDebounce (value, delay) {
+    const [debouncedValue, setDebouncedValue] =useState(value);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+
+        return () => clearTimeout(timer);
+    },[value,delay])
+
+    return debouncedValue;
 }
 
 export default UserSearchSection;
