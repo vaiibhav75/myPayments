@@ -8,7 +8,7 @@ import {search} from "../../api/search.js";
 function UserSearchSection({clickSend, cuurentUser}) {
     const [currentFilter, setCurrentFilter] = useState("");
     const [filter, setFilter] = useState("");
-    const debouncedFilter = useDebounce(filter, 300);
+    const debouncedFilter = useDebounce(filter, 500);
     return (
         <div className={"max-w-7xl mx-auto px-8 pb-6"}>
             <div>
